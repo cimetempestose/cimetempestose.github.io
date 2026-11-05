@@ -1,0 +1,573 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cime Tempestose</title>
+<meta name="description" content="Cime Tempestose is an upcycling and styling studio that gives a second life to very high quality fabrics. First collection, Anna's textiles, out in Spring 2027.">
+<meta property="og:title" content="Cime Tempestose">
+<meta property="og:description" content="An upcycling and styling studio that gives a second life to very high quality fabrics.">
+<meta property="og:image" content="https://cimetempestose.github.io/images/hero.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23EFE6D3'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='34' text-anchor='middle' fill='%231F1A14'%3ECT%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&display=swap">
+<style>
+:root {
+  --bg: #EFE6D3;
+  --bg-alt: #E8DCC0;
+  --ink: #1F1A14;
+  --ink-soft: #6F614E;
+  --wine: #5A1F27;
+  --rule: rgba(31, 26, 20, 0.12);
+  --gutter: max(28px, env(safe-area-inset-left, 0px));
+  --gutter-r: max(28px, env(safe-area-inset-right, 0px));
+  color-scheme: light;
+}
+@media (max-width: 640px) {
+  :root {
+    --gutter: max(18px, env(safe-area-inset-left, 0px));
+    --gutter-r: max(18px, env(safe-area-inset-right, 0px));
+  }
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Fraunces', Georgia, serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+img { max-width: 100%; }
+[hidden] { display: none !important; }
+p { margin: 0 0 1.1em; }
+h1, h2, h3 { font-weight: 450; letter-spacing: -0.015em; margin: 0; line-height: 1.1; }
+
+.caps {
+  font-weight: 500;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+/* ─── Top bar ─────────────────────────────── */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(239, 230, 211, 0.94);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--rule);
+  padding: calc(14px + env(safe-area-inset-top, 0px)) var(--gutter-r) 14px var(--gutter);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px 24px;
+  flex-wrap: wrap;
+}
+.brand {
+  font-size: 20px;
+  color: var(--ink);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.brand:hover { color: var(--wine); }
+.tabs { display: flex; gap: 22px; flex-wrap: wrap; }
+.tabs a {
+  font-weight: 500;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  text-decoration: none;
+  padding: 6px 0;
+  border-bottom: 1px solid transparent;
+  transition: color 0.15s, border-color 0.15s;
+}
+.tabs a:hover { color: var(--ink); }
+.tabs a[aria-current="page"] { color: var(--ink); border-bottom-color: var(--ink); }
+
+main { flex: 1; }
+
+/* ─── Shared page shell ───────────────────── */
+.page-inner {
+  padding: 72px var(--gutter-r) 88px var(--gutter);
+}
+@media (max-width: 640px) { .page-inner { padding-top: 48px; padding-bottom: 64px; } }
+.wrap { max-width: 1200px; margin: 0 auto; }
+.wrap.narrow { max-width: 1100px; }
+.wrap.narrower { max-width: 960px; }
+
+.page-title {
+  font-size: clamp(34px, 5vw, 58px);
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  padding-bottom: 24px;
+  margin-bottom: 48px;
+  border-bottom: 1px solid var(--rule);
+}
+
+/* ─── HOME ────────────────────────────────── */
+.masthead {
+  padding: 48px var(--gutter-r) 28px var(--gutter);
+  text-align: center;
+}
+.wordmark {
+  font-weight: 350;
+  font-size: clamp(42px, 8vw, 96px);
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+.hero {
+  position: relative;
+  height: clamp(200px, 32vh, 360px);
+  overflow: hidden;
+  background: #2b241c;
+}
+.hero img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+.hero .scroll-cue {
+  position: absolute;
+  bottom: 16px;
+  right: var(--gutter-r);
+  color: rgba(239, 230, 211, 0.7);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+}
+.intro {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 88px var(--gutter-r) 72px var(--gutter);
+}
+@media (max-width: 640px) { .intro { padding-top: 56px; padding-bottom: 48px; } }
+.lede {
+  font-size: clamp(22px, 2.6vw, 30px);
+  line-height: 1.4;
+  letter-spacing: -0.005em;
+  margin-bottom: 32px;
+}
+.intro p:last-child { margin: 0; line-height: 1.75; }
+
+.collection {
+  background: var(--bg-alt);
+  padding: 80px var(--gutter-r) 96px var(--gutter);
+}
+.collection-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px 24px;
+  flex-wrap: wrap;
+  padding-bottom: 24px;
+  margin-bottom: 0;
+  border-bottom: 1px solid var(--rule);
+}
+.collection-head h2 { font-size: clamp(32px, 4.5vw, 52px); }
+.collection-head .caps { font-size: 11px; line-height: 1.6; text-align: right; }
+@media (max-width: 480px) { .collection-head .caps { text-align: left; } }
+.cards { display: grid; grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 760px) { .cards { grid-template-columns: 1fr; } }
+.card {
+  display: block;
+  padding: 32px 24px 36px;
+  text-decoration: none;
+  color: var(--ink);
+  transition: background 0.2s;
+}
+.card + .card { border-left: 1px solid var(--rule); }
+@media (max-width: 760px) {
+  .card { padding-left: 0; padding-right: 0; border-bottom: 1px solid var(--rule); }
+  .card + .card { border-left: none; }
+}
+.card:hover { background: rgba(31, 26, 20, 0.03); }
+.card .caps { display: block; font-size: 11px; margin-bottom: 14px; }
+.card .label {
+  display: block;
+  font-weight: 450;
+  font-size: clamp(22px, 2.6vw, 28px);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  transition: color 0.15s;
+}
+.card .arrow { display: inline-block; margin-left: 8px; transition: transform 0.2s; }
+.card:hover .label { color: var(--wine); }
+.card:hover .arrow { transform: translateX(4px); }
+
+/* ─── Image tiles (moodboard, atelier, prototype) ─ */
+.tile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 10px;
+}
+@media (max-width: 420px) { .tile-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; } }
+.tile {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: none;
+  background: #d9d1be;
+  overflow: hidden;
+  cursor: zoom-in;
+}
+.tile img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+.tile:hover img { transform: scale(1.02); }
+.tile:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+
+/* ─── GENESIS ─────────────────────────────── */
+.manifesto { max-width: 640px; margin: 0 auto 80px; }
+.manifesto p { margin: 0 0 1.3em; line-height: 1.75; }
+.manifesto .lede { margin-bottom: 1.9em; line-height: 1.4; }
+.manifesto .term, .manifesto .brand-name { font-weight: 500; font-style: normal; }
+.manifesto hr { border: none; border-top: 1px solid var(--rule); width: 48px; margin: 2.8em 0; }
+.gallery-head {
+  max-width: 640px;
+  margin: 0 auto 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.gallery-head h2 { font-size: clamp(22px, 2.8vw, 30px); letter-spacing: -0.01em; }
+.atelier img { aspect-ratio: 4 / 5; }
+
+/* ─── PHASES ──────────────────────────────── */
+.phases-intro { max-width: 640px; color: var(--ink-soft); margin-bottom: 48px; }
+.phase {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 40px;
+  padding: 28px 0 32px;
+  border-top: 1px solid var(--rule);
+}
+.phase:last-child { border-bottom: 1px solid var(--rule); }
+@media (max-width: 640px) { .phase { grid-template-columns: 1fr; gap: 12px; padding: 24px 0 28px; } }
+.phase-marker { display: flex; flex-direction: column; gap: 8px; padding-top: 6px; }
+.phase-marker .num { font-size: 14px; letter-spacing: 0.12em; color: var(--ink); }
+.status { display: inline-block; width: fit-content; padding: 4px 10px; border-radius: 2px; letter-spacing: 0.2em; }
+.status.current { background: var(--ink); color: var(--bg); }
+.status.next { border: 1px solid var(--rule); }
+.status.future { color: rgba(111, 97, 78, 0.55); }
+.phase-body h2 { font-size: clamp(22px, 2.8vw, 30px); letter-spacing: -0.01em; line-height: 1.2; margin-bottom: 12px; }
+.phase-body p { max-width: 60ch; font-size: 16px; margin-bottom: 14px; }
+.phase-body .sub { color: var(--ink-soft); font-size: 14px; }
+.checklist { list-style: none; padding: 0; margin: 14px 0 0; display: flex; flex-direction: column; gap: 8px; letter-spacing: 0.14em; font-size: 11px; }
+.checklist li::before { content: "– "; color: var(--ink); }
+.proto { margin-top: 24px; grid-template-columns: repeat(auto-fill, minmax(180px, 240px)); }
+.proto-caption { margin-top: 16px; }
+
+/* ─── Footer ──────────────────────────────── */
+footer {
+  border-top: 1px solid var(--rule);
+  padding: 32px var(--gutter-r) calc(32px + env(safe-area-inset-bottom, 0px)) var(--gutter);
+}
+footer .wrap {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* ─── Lightbox ────────────────────────────── */
+.lightbox {
+  position: fixed; inset: 0;
+  z-index: 100;
+  background: rgba(31, 26, 20, 0.94);
+  display: flex; align-items: center; justify-content: center;
+  padding: 24px;
+  cursor: zoom-out;
+}
+.lightbox img { max-width: 100%; max-height: 100%; object-fit: contain; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5); }
+.lightbox-close {
+  position: fixed;
+  top: calc(20px + env(safe-area-inset-top, 0px));
+  right: calc(20px + env(safe-area-inset-right, 0px));
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(239, 230, 211, 0.3);
+  background: rgba(239, 230, 211, 0.15);
+  color: var(--bg);
+  font: 400 22px/1 'Fraunces', Georgia, serif;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  padding: 0;
+}
+.lightbox-close:hover { background: rgba(239, 230, 211, 0.25); }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a href="#home" class="brand">Cime Tempestose</a>
+  <nav class="tabs" aria-label="Sections">
+    <a href="#home">Home</a>
+    <a href="#genesis">Genesis</a>
+    <a href="#phases">Phases</a>
+    <a href="#moodboard">Moodboard</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ─── HOME ─────────────────────────────── -->
+  <section class="page" id="home" data-page>
+    <div class="masthead">
+      <h1 class="wordmark">Cime Tempestose</h1>
+    </div>
+
+    <div class="hero">
+      <img src="images/hero.jpg" alt="At Anna's atelier, Milan">
+      <span class="scroll-cue caps">↓ Scroll</span>
+    </div>
+
+    <div class="intro">
+      <p class="lede">An upcycling and styling studio that gives a second life to very high quality fabrics.</p>
+      <p>We work with what already exists, rescuing fabrics from forgotten archives, atelier corners, cushion covers and old curtains, and reworking them into one-of-a-kind pieces for bold personalities who want to look unique, different, and a bit funky.</p>
+    </div>
+
+    <div class="collection">
+      <div class="wrap narrower">
+        <div class="collection-head">
+          <h2>Anna's textiles</h2>
+          <div class="caps">The first collection<br>Out in Spring 2027</div>
+        </div>
+        <div class="cards">
+          <a class="card" href="#genesis">
+            <span class="caps">Origin</span>
+            <span class="label">Genesis &amp; inspiration<span class="arrow">→</span></span>
+          </a>
+          <a class="card" href="#phases">
+            <span class="caps">Process</span>
+            <span class="label">Project phases<span class="arrow">→</span></span>
+          </a>
+          <a class="card" href="#moodboard">
+            <span class="caps">Direction</span>
+            <span class="label">Moodboard<span class="arrow">→</span></span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── GENESIS ──────────────────────────── -->
+  <section class="page" id="genesis" data-page>
+    <div class="page-inner">
+      <div class="wrap narrow">
+        <h1 class="page-title">Genesis &amp; inspiration</h1>
+
+        <div class="manifesto">
+          <p class="lede">The inspiration for this project came in 2021, during covid, while sorting out old textiles in my grandmother's atelier.</p>
+
+          <p>My grandmother Anna is a fantastic interior designer and antiques collector, and over the years she has collected scraps of curtains, sofa patterns, cushion covers, and other leftovers from her commissioned projects. Anything with a good hand or a good print.</p>
+
+          <p>She's travelled the world looking for unique objects and fabrics. Her style and eye were forever changed by her trips to India, Myanmar, Tibet, Afghanistan, Japan (but also Peru and Colombia), finding commonalities as well as unique cultural features in all these fascinating countries where craftsmanship is still prized.</p>
+
+          <p>There's a Japanese word for collecting miscellaneous objects in the house: <span class="term">Komono</span>, the systematic categorization and mindful organizing of everyday items within the home. In Chinese there is a similar concept, <span class="term">wù jìn qí yòng</span>: anything capable of serving a purpose should be utilized to its maximum potential rather than being thrown away or wasted. In Europe too: Italians say <span class="term">non si butta via niente</span> (nothing is thrown away), especially in the kitchen, where some of the best dishes were born out of leftovers: polpettone, panzanella, frittata di pasta, arancini. She did this with textiles instead, not wanting to let them go. They can always come in handy.</p>
+
+          <p>I don't mean to hide behind historically and culturally distant words and culturally appropriating them. It's a coincidence. A few days before writing this, I visited the MAO (the Museum of Oriental Art in Turin), where I came across <span class="term">Waste Not</span> (2005), a large-scale installation by the Chinese artist Song Dong. Originally a collaboration with his mother, Zhao Xiang Yuan, the work gathers the entire contents of her Beijing home, amassed over her lifetime. The concept of <span class="term">wu jin qi yong</span> ("waste not") was a requisite guideline for survival for the generation that lived through the hardships of the Cultural Revolution (1966–1976).</p>
+
+          <p>It made me think of the difference between collecting for necessity and collecting for pleasure, and about the trajectory of consumerism, from necessity for some to hobby for others. Whatever pushes people to collect, categorise and keep, their objects are always a door to their hearts, their minds, their way of perceiving the world and its unexpected tricks. It's important to look at people's belongings, whatever they may be, to truly dive into their memory and what activates their senses. Walking around his mother's objects was a reminder of what a crisis can induce you to do, and what it leaves of you long after that time has passed. Some actions never leave us; they become a source of truth for whoever comes to know us later.</p>
+
+          <p>Luckily enough, I found myself in the room when things slowed down during covid, sorting out the atelier a bit. Gems couldn't stop coming out of corners. The idea to reuse them surfaced there, and stayed an idea until 2026.</p>
+
+          <hr>
+
+          <p>The mission is very simple, nothing new: repurposing very high quality fabrics to create unique pieces that last. The pieces will speak to bold personalities who want to look unique, different, and a bit funky. It speaks to those who refuse to buy scrappy fast-fashion items that don't last three washing rounds, and instead prioritise circularity.</p>
+
+          <p><span class="brand-name">Cime Tempestose</span> doesn't sell itself as a sustainable brand. We don't source organic cotton, nor run repairs or recycling processes. We're an upcycling and styling studio that gives a second life to waste.</p>
+
+          <p>We hope the humans who will buy, inherit, or receive our pieces will feel empowered and more courageous to move through the world with care and compassion for its people, animals, and objects, and that they will feel inspired to turn their own old objects and garments into something fun and useful. No limit to imagination!!</p>
+        </div>
+
+        <div class="gallery-head">
+          <h2>At the atelier</h2>
+          <span class="caps">Anna, mom and I, scavenging</span>
+        </div>
+        <div class="tile-grid atelier">
+          <button class="tile" data-src="images/atelier/atelier-1.jpg" aria-label="Zoom photo"><img src="images/atelier/atelier-1.jpg" alt="At the atelier" loading="lazy"></button>
+          <button class="tile" data-src="images/atelier/atelier-2.jpg" aria-label="Zoom photo"><img src="images/atelier/atelier-2.jpg" alt="At the atelier" loading="lazy"></button>
+          <button class="tile" data-src="images/atelier/atelier-3.jpg" aria-label="Zoom photo"><img src="images/atelier/atelier-3.jpg" alt="At the atelier" loading="lazy"></button>
+          <button class="tile" data-src="images/atelier/atelier-4.jpg" aria-label="Zoom photo"><img src="images/atelier/atelier-4.jpg" alt="At the atelier" loading="lazy"></button>
+          <button class="tile" data-src="images/atelier/atelier-5.jpg" aria-label="Zoom photo"><img src="images/atelier/atelier-5.jpg" alt="At the atelier" loading="lazy"></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── PHASES ───────────────────────────── -->
+  <section class="page" id="phases" data-page>
+    <div class="page-inner">
+      <div class="wrap narrower">
+        <h1 class="page-title">Project phases</h1>
+
+        <p class="phases-intro">A project in stages. The first prototypes will guide the product direction. No decisions made before having them in hand.</p>
+
+        <div class="phase">
+          <div class="phase-marker caps">
+            <span class="num">01</span>
+            <span class="status current">In progress</span>
+          </div>
+          <div class="phase-body">
+            <h2>Textiles gathering, pattern making &amp; upcycling discovery</h2>
+            <p>Cataloguing Anna's textile archive. First cut-and-sew trials with Marta, the seamstress, to understand what can be done with the available materials: hand, rigidity, fibre content, piece size.</p>
+            <ul class="checklist caps">
+              <li>Inventory of available textiles</li>
+              <li>First prototypes with Marta, the seamstress: one jacket + one bag</li>
+              <li>Pattern tests on recovered fabrics</li>
+              <li>Feasibility assessment per garment</li>
+            </ul>
+            <div class="tile-grid proto">
+              <button class="tile" data-src="images/prototype-denim-bag.jpg" aria-label="Zoom prototype"><img src="images/prototype-denim-bag.jpg" alt="Sculptural denim bag prototype" loading="lazy"></button>
+            </div>
+            <p class="proto-caption caps">First prototype with Marta · sculptural heavy-denim bag</p>
+          </div>
+        </div>
+
+        <div class="phase">
+          <div class="phase-marker caps">
+            <span class="num">02</span>
+            <span class="status next">Next</span>
+          </div>
+          <div class="phase-body">
+            <h2>Product direction</h2>
+            <p>Once the first prototypes are in, decide which product types to pursue: accessories, structured garments, a small capsule. Define the identity and tone of voice.</p>
+            <p class="sub">To be defined after the first prototypes.</p>
+          </div>
+        </div>
+
+        <div class="phase">
+          <div class="phase-marker caps">
+            <span class="num">03</span>
+            <span class="status future">Future</span>
+          </div>
+          <div class="phase-body">
+            <h2>Production &amp; refinement</h2>
+            <p>Run the chosen pieces, refine finishes, packaging, product photography.</p>
+          </div>
+        </div>
+
+        <div class="phase">
+          <div class="phase-marker caps">
+            <span class="num">04</span>
+            <span class="status future">Future</span>
+          </div>
+          <div class="phase-body">
+            <h2>Narrative &amp; distribution</h2>
+            <p>Tell the story and open sales channels.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── MOODBOARD ────────────────────────── -->
+  <section class="page" id="moodboard" data-page>
+    <div class="page-inner">
+      <div class="wrap">
+        <h1 class="page-title">Moodboard</h1>
+        <div class="tile-grid">
+          <button class="tile" data-src="images/refs/01-giacca-kantha-injiri.webp" aria-label="Zoom image"><img src="images/refs/01-giacca-kantha-injiri.webp" alt="" loading="lazy"></button>
+          <button class="tile" data-src="images/refs/02-giacca-boutis-bordeaux.webp" aria-label="Zoom image"><img src="images/refs/02-giacca-boutis-bordeaux.webp" alt="" loading="lazy"></button>
+          <button class="tile" data-src="images/refs/03-cappa-oliva-ricamata.webp" aria-label="Zoom image"><img src="images/refs/03-cappa-oliva-ricamata.webp" alt="" loading="lazy"></button>
+          <button class="tile" data-src="images/refs/04-cappa-oliva-portata.webp" aria-label="Zoom image"><img src="images/refs/04-cappa-oliva-portata.webp" alt="" loading="lazy"></button>
+          <button class="tile" data-src="images/refs/05-giacca-oliva-corta-retro.webp" aria-label="Zoom image"><img src="images/refs/05-giacca-oliva-corta-retro.webp" alt="" loading="lazy"></button>
+          <button class="tile" data-src="images/refs/06-giacca-oliva-corta-fronte.webp" aria-label="Zoom image"><img src="images/refs/06-giacca-oliva-corta-fronte.webp" alt="" loading="lazy"></button>
+          <button class="tile" data-src="images/refs/07-giacca-nera-ricami-retro.webp" aria-label="Zoom image"><img src="images/refs/07-giacca-nera-ricami-retro.webp" alt="" loading="lazy"></button>
+          <button class="tile" data-src="images/refs/08-giacca-nera-ricami-dietro.webp" aria-label="Zoom image"><img src="images/refs/08-giacca-nera-ricami-dietro.webp" alt="" loading="lazy"></button>
+          <button class="tile" data-src="images/refs/09-giacca-nera-ricami-fronte.png" aria-label="Zoom image"><img src="images/refs/09-giacca-nera-ricami-fronte.png" alt="" loading="lazy"></button>
+          <button class="tile" data-src="images/refs/10-giacca-nera-portata.png" aria-label="Zoom image"><img src="images/refs/10-giacca-nera-portata.png" alt="" loading="lazy"></button>
+          <button class="tile" data-src="images/refs/11-gilet-paisley.webp" aria-label="Zoom image"><img src="images/refs/11-gilet-paisley.webp" alt="" loading="lazy"></button>
+          <button class="tile" data-src="images/refs/12-gilet-montone-ricamato.webp" aria-label="Zoom image"><img src="images/refs/12-gilet-montone-ricamato.webp" alt="" loading="lazy"></button>
+          <button class="tile" data-src="images/refs/13-gilet-montone-fronte.png" aria-label="Zoom image"><img src="images/refs/13-gilet-montone-fronte.png" alt="" loading="lazy"></button>
+          <button class="tile" data-src="images/refs/14-borsa-pelle-coulisse.webp" aria-label="Zoom image"><img src="images/refs/14-borsa-pelle-coulisse.webp" alt="" loading="lazy"></button>
+          <button class="tile" data-src="images/refs/15-borsa-boutis-floreale.webp" aria-label="Zoom image"><img src="images/refs/15-borsa-boutis-floreale.webp" alt="" loading="lazy"></button>
+          <button class="tile" data-src="images/refs/16-borsa-boutis-bordeaux.webp" aria-label="Zoom image"><img src="images/refs/16-borsa-boutis-bordeaux.webp" alt="" loading="lazy"></button>
+          <button class="tile" data-src="images/refs/17-borsa-perline-geometrica.webp" aria-label="Zoom image"><img src="images/refs/17-borsa-perline-geometrica.webp" alt="" loading="lazy"></button>
+          <button class="tile" data-src="images/refs/18-borsa-perline-fiori.webp" aria-label="Zoom image"><img src="images/refs/18-borsa-perline-fiori.webp" alt="" loading="lazy"></button>
+          <button class="tile" data-src="images/refs/19-pantaloni-ricamati.webp" aria-label="Zoom image"><img src="images/refs/19-pantaloni-ricamati.webp" alt="" loading="lazy"></button>
+          <button class="tile" data-src="images/refs/20-cappello-herringbone.png" aria-label="Zoom image"><img src="images/refs/20-cappello-herringbone.png" alt="" loading="lazy"></button>
+          <button class="tile" data-src="images/models/giacca-floreale.jpg" aria-label="Zoom image"><img src="images/models/giacca-floreale.jpg" alt="" loading="lazy"></button>
+          <button class="tile" data-src="images/models/jacket-sfalsata.jpg" aria-label="Zoom image"><img src="images/models/jacket-sfalsata.jpg" alt="" loading="lazy"></button>
+          <button class="tile" data-src="images/models/funky-bag.jpg" aria-label="Zoom image"><img src="images/models/funky-bag.jpg" alt="" loading="lazy"></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="caps">
+  <div class="wrap">
+    <span>Cime Tempestose Studio, 2026, Coming Soon</span>
+    <span>Anna's textiles</span>
+  </div>
+</footer>
+
+<div id="lightbox" class="lightbox" hidden role="dialog" aria-modal="true" aria-label="Image viewer">
+  <button class="lightbox-close" id="lightbox-close" aria-label="Close">×</button>
+  <img id="lightbox-img" alt="">
+</div>
+
+<script>
+  const pages = [...document.querySelectorAll('[data-page]')];
+  const tabLinks = [...document.querySelectorAll('.tabs a')];
+
+  function showPage() {
+    const id = location.hash.slice(1);
+    const target = pages.find(p => p.id === id) || pages[0];
+    pages.forEach(p => { p.hidden = p !== target; });
+    tabLinks.forEach(a => {
+      if (a.getAttribute('href') === '#' + target.id) a.setAttribute('aria-current', 'page');
+      else a.removeAttribute('aria-current');
+    });
+    document.title = target.id === 'home'
+      ? 'Cime Tempestose'
+      : target.querySelector('.page-title').textContent + ' · Cime Tempestose';
+    window.scrollTo(0, 0);
+  }
+  window.addEventListener('hashchange', showPage);
+  showPage();
+
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+
+  function closeLightbox() {
+    lightbox.hidden = true;
+    lightboxImg.removeAttribute('src');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('click', (e) => {
+    const tile = e.target.closest('.tile');
+    if (tile) {
+      lightboxImg.src = tile.dataset.src;
+      lightbox.hidden = false;
+      document.body.style.overflow = 'hidden';
+      return;
+    }
+    if (e.target === lightbox || e.target.id === 'lightbox-close') closeLightbox();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !lightbox.hidden) closeLightbox();
+  });
+</script>
+</body>
+</html>
